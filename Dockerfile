@@ -17,7 +17,8 @@ RUN yum install -y -q bind-utils && \
 
 RUN cd /opt &&\
 	curl -LO http://apache.uvigo.es/cassandra/$CASSANDRA_VERSION/apache-cassandra-$CASSANDRA_VERSION-bin.tar.gz && ls -l &&\ 
-    tar xvzf apache-cassandra-$CASSANDRA_VERSION-bin.tar.gz && \
+	gunzip apache-cassandra-$CASSANDRA_VERSION-bin.tar && \
+    tar -xvf apache-cassandra-$CASSANDRA_VERSION-bin.tar && \
     rm apache-cassandra-$CASSANDRA_VERSION-bin.tar.gz && \
     ln -s apache-cassandra-$CASSANDRA_VERSION apache-cassandra
 
